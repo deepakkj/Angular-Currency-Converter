@@ -7,33 +7,35 @@
         <link rel="stylesheet" type="text/css" href="css/app.css">
     </head>
 
-    <body ng-app="currency-converter" ng-controller="currency-converter-ctrl">
+    <body ng-app="invoice2" ng-controller="InvoiceController as invoice">
        <div class="app-wrapper">
        <h1>Angular Currency Converter</h1>
         <div>
             <label>Quantity:</label>
-            <input type="number" ng-model="qty">
+            <input type="number" ng-model="invoice.qty">
         </div>    
         <div>
             <label>Costs: </label>
-            <input type="number" ng-model="cost">
-            <select ng-model="inCurr">
-                <option ng-repeat="x in currencies">{{x}}</option>
+            <input type="number" ng-model="invoice.cost">
+            <select ng-model="invoice.inCurr">
+                <option ng-repeat="x in invoice.currencies">{{x}}</option>
             </select>
         </div>
         <div>
             <hr>
             <h4>Total:</h4>
-                <span ng-repeat="c in currencies">
-      {{total(c) | currency:c}}
+                <span ng-repeat="c in invoice.currencies">
+      {{invoice.total(c) | currency:c}}
     </span>
         </div>
         <div>
-            <button value="Pay" ng-click="pay()">Pay</button>
+            <button value="Pay" ng-click="invoice.pay()">Pay</button>
         </div>
         </div>
         <script src="../node_modules/angular/angular.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/services.js"></script>
     </body>
 
     </html>
